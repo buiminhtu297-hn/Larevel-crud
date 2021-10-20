@@ -1,7 +1,12 @@
 <?php
 
+use App\Models\Todo;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodosController;
+use App\Http\Controllers\TodosExportController;
+use App\Http\Controllers\TodosImportController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,12 +18,21 @@ use App\Http\Controllers\TodosController;
 |
 */
 
-
 Route::get('/', [TodosController::class, 'index']);
 Route::get('/list', [TodosController::class, 'index']);
-Route::get('todos/{todo}', [TodosController::class, 'show']);
-Route::get('new-todos', [TodosController::class, 'create']);
+Route::get('/todos/{todo}', [TodosController::class, 'show']);
+Route::get('/new-todos', [TodosController::class, 'create']);
 Route::post('/store-todos', [TodosController::class, 'store']);
 Route::get('/todos/{todo}/edit', [TodosController::class, 'edit']);
 Route::post('/todos/{todo}/update-todos', [TodosController::class, 'update']);
-Route::get('todos/{todo}/delete', [TodosController::class, 'destroy']);
+Route::get('/todos/{todo}/delete', [TodosController::class, 'destroy']);
+Route::get('/export', [TodosExportController::class, 'export']);
+Route::get('/import', [TodosImportController::class, 'show']);
+Route::post('/import', [TodosImportController::class, 'store']);
+
+
+
+
+
+
+

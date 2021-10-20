@@ -19,12 +19,13 @@ class TodoFactory extends Factory
      *
      * @return array
      */
+
     public function definition()
     {
         return [
-            'name'        => $this->faker->sentence(3),
-            'description' => $this->faker->paragraph(4),
-            'completed'   => false 
+            'name'        => $this->faker->unique()->name,
+            'description' => $this->faker->text($maxNbChars = 50),
+            'completed'   => true
         ];
     }
 }

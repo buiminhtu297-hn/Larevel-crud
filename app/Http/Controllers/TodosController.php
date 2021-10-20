@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Todo;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class TodosController extends Controller
 {
     /**
@@ -13,7 +13,7 @@ class TodosController extends Controller
      */
     public function index()
     {
-        $todos = Todo::all();
+        $todos = Todo::Paginate(50);
         return view('todos.list')->with('todos', $todos);
     }
 
@@ -36,7 +36,7 @@ class TodosController extends Controller
     public function store(Request $request)
     {
         $this->validate(request(), [
-        'name' => 'required|min:6|max:12',
+        'name' => 'required|min:3|max:20',
         'description' => 'required'
         ]);
 
@@ -45,11 +45,11 @@ class TodosController extends Controller
         $todo = new Todo();
         $todo->name = $data['name'];
         $todo->description = $data['description'];
-        $todo->completed = false;
+        $todo->completed = true;
 
         $todo->save();
 
-        return redirect('/list');    
+        return redirect('/list');
     }
 
     /**
@@ -90,7 +90,7 @@ class TodosController extends Controller
 
         $data = request()->all();
 
-        
+
         $todo->name = $data['name'];
         $todo->description = $data['description'];
 

@@ -100,6 +100,27 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        'importLogging' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/importLogging.log'),
+            'level' => env('LOG_LEVEL', 'debug')
+        ],
+        'crontab-updatename' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/crontab-updatename.log'),
+            'level' => env('LOG_LEVEL', 'debug')
+        ],
+        'action' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/action.log'),
+            'level' => env('LOG_LEVEL', 'debug')
+        ],
+        'query' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/query.log'),
+            'level' => env('LOG_LEVEL', 'debug')
+        ],
     ],
 
 ];

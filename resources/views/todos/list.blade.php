@@ -23,8 +23,12 @@
                             </li>
                         @endforeach
                     </ul>
+                    {{ $todos->links() }}
                 </div>
             </div>
+
         </div>
+
     </div>
+    
 @endsection
